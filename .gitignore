@@ -1,0 +1,8 @@
+*.env*
+*key*
+*logs*
+*pycache*
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
