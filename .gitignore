@@ -3,6 +3,7 @@
 *logs*
 *pycache*
 .terraform/
+*.terraform.*
 *.tfstate
 *.tfstate.*
 crash.log
