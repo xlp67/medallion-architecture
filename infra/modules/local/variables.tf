@@ -1,4 +1,6 @@
-variable "dataset_id" {}
-variable "table_id" {}
 variable "region" {}
 variable "project_id" {}
+variable "dataset_id" {}
+variable "tables" {
+  type        = map(string)
+}

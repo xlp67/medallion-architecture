@@ -47,8 +47,10 @@
 x-airflow-common: &airflow-common
   build: .
   env_file:
-    - ${ENV_FILE_PATH:-.env}
+    - ./config/.env.gcp
   environment: &airflow-common-env
+    AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: "google-cloud-platform://?extra__google_cloud_platform__key_path=%2Fopt%2Fairflow%2Fconfig%2Fsa-key.json&extra__google_cloud_platform__project=resolve-ai-407701"
+    AIRFLOW_UID: $(id -u)
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
     AIRFLOW__CORE__AUTH_MANAGER: airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
@@ -75,6 +77,7 @@ x-airflow-common: &airflow-common
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/dags/datasets:/opt/airflow/dags/datasets
+    - ${AIRFLOW_PROJ_DIR:-.}./ml:/opt/airflow/ml
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on: &airflow-common-depends-on
     redis:

@@ -33,4 +33,10 @@ RUN pip install --no-cache-dir \
     "yfinance"\
     "google-cloud-bigquery"\
     "google-auth-oauthlib" \
-    "google-auth-httplib2"
+    "google-auth-httplib2" 
+    # "torch" \
+    # "transformers" \
+    # "accelerate" \
+    # "gluonts" \
+    # "pandas-gbq" \
+    # "matplotlib"
